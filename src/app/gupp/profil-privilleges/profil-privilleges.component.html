@@ -1,0 +1,31 @@
+<nz-table nzBordered [nzSize]="'small'" #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th rowspan="2">PROFIL</th>
+      <th colspan="3">AAL</th>
+      <th colspan="3">UTILISATEURS</th>
+      <th colspan="3">ADRESSES</th>
+      <th rowspan="2">ACTION</th>
+    </tr>
+    <tr>
+      <ng-container *ngFor="let i of [1, 2, 3]">
+        <th>AJOUTER</th>
+        <th>MODIFIER</th>
+        <th>SUPPRIMER</th>
+      </ng-container>
+    </tr>
+  </thead>
+  <tbody style="text-align: center">
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.name }}</td>
+      <ng-container *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+        <td>
+          <label nz-checkbox></label>
+        </td>
+      </ng-container>
+      <td></td>
+    </tr>
+  </tbody>
+  <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
+  <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
+</nz-table>

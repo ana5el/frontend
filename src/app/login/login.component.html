@@ -1,0 +1,64 @@
+<div class="bg-login">
+  <div class="test" nz-row nzJustify="center">
+    <div nz-col nzSpan="12">
+      <form
+        nz-form
+        class="login-form"
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <nz-form-item nzJustify="center">
+          <img src="../../assets/img/login-photo.png" width="60%" />
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control
+            nzErrorTip="Veuillez saisir votre identifiant utilisateur"
+          >
+            <nz-input-group
+              nzPrefixIcon="user"
+              class="ng-tns-c177-823 ant-input-affix-wrapper"
+            >
+              <input
+                nz-input
+                type="text"
+                class="ant-input"
+                formControlName="username"
+                placeholder="Nom d'utilisateur"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Veuillez saisir votre mot de passe">
+            <nz-input-group
+              nzPrefixIcon="lock"
+              class="ng-tns-c177-823 ant-input-affix-wrapper"
+            >
+              <input
+                nz-input
+                type="password"
+                class="ant-input"
+                formControlName="password"
+                placeholder="Mot de passe"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <button
+          type="submit"
+          nz-button
+          nzType="primary"
+          class="login-form-button login-form-margin"
+        >
+          Connexion
+        </button>
+        <a
+          (click)="
+            showMessage('warning', 'Please connect your system administrator!')
+          "
+          >Mot de passe oublié ?</a
+        >
+      </form>
+    </div>
+  </div>
+</div>

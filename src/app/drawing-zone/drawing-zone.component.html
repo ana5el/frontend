@@ -1,0 +1,169 @@
+<nz-divider [nzText]="text">
+  <ng-template #text>
+    <i nz-icon nzType="environment" nzTheme="outline"></i> AJOUTER UNE ADRESSE
+  </ng-template>
+</nz-divider>
+{{ form.value | json }}
+{{ pointList | json }}
+<agm-map
+  [latitude]="lat"
+  [longitude]="lng"
+  (mapReady)="onMapReady($event)"
+  *ngIf="dataLoaded2"
+>
+  <ng-container *ngIf="maisonsLoaded">
+    <agm-polygon
+      *ngFor="let maison of maisons"
+      [paths]="maison.path"
+      [strokeColor]="'#ff00b4f4'"
+      [strokeOpacity]="0.3"
+      [fillColor]="'#5c00b4f4'"
+    ></agm-polygon>
+  </ng-container>
+
+  <ng-container *ngIf="villasLoaded">
+    <agm-polygon
+      *ngFor="let villa of villas"
+      [paths]="villa.path"
+      [fillColor]="'#ff0000'"
+      [strokeOpacity]="0"
+      [fillOpacity]="0.7"
+    ></agm-polygon>
+  </ng-container>
+
+  <ng-container *ngIf="immeublesLoaded">
+    <agm-polygon
+      *ngFor="let imm of immeubles"
+      [paths]="imm.path"
+      [fillColor]="'#fef65b'"
+      [strokeOpacity]="0"
+      [fillOpacity]="0.7"
+    ></agm-polygon
+  ></ng-container>
+
+  <agm-info-window
+    *ngIf="isLoaded"
+    [latitude]="center.lat"
+    [longitude]="center.lng"
+    [isOpen]="isOpen"
+    (infoWindowClose)="isOpen = false"
+  >
+    <div nz-row style="max-width: auto">
+      <form nz-form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+        <nz-form-item>
+          <nz-form-label nzRequired nzFor="type" [nzSpan]="9"
+            >Type de logement</nz-form-label
+          >
+          <nz-form-control [nzSpan]="17">
+            <label>
+              <input
+                type="radio"
+                value="maison"
+                formControlName="type"
+                checked
+              />
+              <span> Maison </span>
+            </label>
+            <label>
+              <input type="radio" value="villa" formControlName="type" />
+              <span> Villa </span>
+            </label>
+            <label>
+              <input type="radio" value="immeuble" formControlName="type" />
+              <span> Imm. </span>
+            </label>
+            <label>
+              <input type="radio" value="residence" formControlName="type" />
+              <span> Rés. </span>
+            </label>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired nzFor="rue" [nzSpan]="9"
+            >N° et nom de rue</nz-form-label
+          >
+          <nz-form-control [nzSpan]="17">
+            <input nz-input type="text" formControlName="rue" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired nzFor="quartier" [nzSpan]="9"
+            >Quartier</nz-form-label
+          >
+          <nz-form-control [nzSpan]="17">
+            <input type="text" nz-input formControlName="quartier" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *ngIf="form.get('type')?.value === 'maison'">
+          <nz-form-label nzRequired nzFor="nomaison" [nzSpan]="9"
+            >N° maison</nz-form-label
+          >
+          <nz-form-control [nzSpan]="17">
+            <input
+              nz-input
+              type="number"
+              id="nomaison"
+              formControlName="numero"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *ngIf="form.get('type')?.value === 'villa'">
+          <nz-form-label nzRequired nzFor="novilla" [nzSpan]="9"
+            >N° villa</nz-form-label
+          >
+          <nz-form-control [nzSpan]="17">
+            <input
+              nz-input
+              type="number"
+              id="novilla"
+              formControlName="numero"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *ngIf="form.get('type')?.value === 'immeuble'">
+          <nz-form-label nzFor="nomAr" [nzSpan]="9" nzRequired
+            >N° d'Immeuble | Nom (ar)
+          </nz-form-label>
+          <nz-form-control [nzSpan]="17">
+            <input nz-input type="text" id="nomAr" formControlName="nomAr" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *ngIf="form.get('type')?.value === 'immeuble'">
+          <nz-form-label nzFor="nomFr" [nzSpan]="9" nzRequired
+            >N° d'Immeuble | Nom (fr)</nz-form-label
+          >
+          <nz-form-control [nzSpan]="17">
+            <input nz-input type="text" id="nomFr" formControlName="nomFr" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *ngIf="form.get('type')?.value === 'immeuble'">
+          <nz-form-label nzRequired [nzSpan]="9" nzFor="nbappts"
+            >Nombre des appts</nz-form-label
+          >
+          <nz-form-control [nzSpan]="17">
+            <input
+              nz-input
+              type="number"
+              id="nbappts"
+              formControlName="nbAppts"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *ngIf="form.get('type')?.value === 'immeuble'">
+          <nz-form-label [nzSpan]="9" nzFor="residence"
+            >Résidence</nz-form-label
+          >
+          <nz-form-control [nzSpan]="17">
+            <input nz-input type="text" id="residence" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="24">
+            <button nz-button type="submit">Ajouter</button>
+            <button nz-button type="reset">Annuler</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </agm-info-window>
+</agm-map>

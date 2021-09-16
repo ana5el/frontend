@@ -1,0 +1,13 @@
+{
+  "header": {
+    "logout": "Déconnexion",
+    "lng": "العربية"
+  },
+  "CERTIFICAT_RESIDENCE": "CERTIFICAT DE RESIDENCE",
+  "info": "INFORMATION PERSONNELES",
+  "address": "ADRESSE",
+  "verification": "VERIFICATION / IMPRESSION",
+  "next": "Suivant",
+  "previous": "Précédent",
+  "done": "Treminer"
+}

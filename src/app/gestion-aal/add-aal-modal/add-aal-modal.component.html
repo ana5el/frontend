@@ -1,0 +1,57 @@
+{{ form.value | json }}
+{{ pointList | json }}
+<div nz-row>
+  <div nz-col nzSpan="24" style="height: 40vh">
+    <app-add-zone [(pointList)]="pointList"></app-add-zone>
+  </div>
+</div>
+<form nz-form [formGroup]="form">
+  <div nz-row>
+    <div nz-col nzSpan="12" style="padding-right: 10px">
+      <nz-form-item>
+        <nz-form-label>Libelle arabe</nz-form-label>
+        <input nz-input formControlName="libellear" />
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12" style="padding-right: 10px">
+      <nz-form-item>
+        <nz-form-label>Libelle français</nz-form-label>
+        <input nz-input formControlName="libellefr" />
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row nzJustify="center">
+    <div nz-col nzSpan="12" style="padding-right: 10px">
+      <nz-form-item>
+        <nz-form-label>Téléphone </nz-form-label>
+        <input nz-input formControlName="tel" />
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12" style="padding-right: 10px">
+      <nz-form-item>
+        <nz-form-label>Type</nz-form-label>
+        <nz-select nzAllowClear nzPlaceHolder="Choisir" formControlName="type">
+          <nz-option
+            *ngFor="let type of typeList"
+            [nzValue]="type.id"
+            [nzLabel]="type.labelFr"
+          ></nz-option>
+        </nz-select>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="12" style="padding-right: 10px">
+      <nz-form-item>
+        <nz-form-label>AAL</nz-form-label>
+        <nz-select nzAllowClear nzPlaceHolder="Choisir" formControlName="sup">
+          <nz-option
+            *ngFor="let aal of aalList"
+            [nzValue]="aal.id"
+            [nzLabel]="aal.labelFr"
+          ></nz-option>
+        </nz-select>
+      </nz-form-item>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,68 @@
+<agm-map (mapReady)="onMapReady($event)" *ngIf="dataLoaded2">
+  <ng-container *ngIf="maisonsLoaded">
+    <agm-polygon
+      *ngFor="let maison of maisons"
+      [paths]="maison.path"
+      [strokeOpacity]="0"
+      [fillOpacity]="0.7"
+      [fillColor]="'#008000'"
+      (polyClick)="getMaisonAdresse(maison); infowindowM.open()"
+    >
+      <agm-info-window
+        #infowindowM
+        [latitude]="getCenter(maison.path).lat"
+        [longitude]="getCenter(maison.path).lng"
+      >
+        <div style="max-width: auto">
+          <h4>
+            Maison N° {{ maison.numero }} rue {{ maison.rue }} quartier
+            {{ maison.quartier }}
+          </h4>
+        </div>
+      </agm-info-window>
+    </agm-polygon>
+  </ng-container>
+
+  <ng-container *ngIf="villasLoaded">
+    <agm-polygon
+      *ngFor="let villa of villas"
+      [paths]="villa.path"
+      [fillColor]="'#ff0000'"
+      [strokeOpacity]="0"
+      [fillOpacity]="0.7"
+    ></agm-polygon>
+  </ng-container>
+
+  <ng-container *ngIf="immeublesLoaded">
+    <agm-polygon
+      *ngFor="let imm of immeubles"
+      [paths]="imm.path"
+      [fillColor]="'#fef65b'"
+      [strokeOpacity]="0"
+      [fillOpacity]="0.7"
+      (polyClick)="infowindow.open()"
+    >
+      <agm-info-window
+        #infowindow
+        [latitude]="getCenter(imm.path).lat"
+        [longitude]="getCenter(imm.path).lng"
+      >
+        <div>
+          <div>
+            <h3>Choose number of appartement</h3>
+          </div>
+          <div style="max-width: 220px">
+            <button
+              nz-button
+              *ngFor="let num of imm.appts"
+              style="margin: 5px"
+              (click)="getApptAdresse(num + 1, imm)"
+            >
+              {{ num + 1 }}
+            </button>
+          </div>
+        </div>
+      </agm-info-window>
+    </agm-polygon>
+  </ng-container>
+</agm-map>

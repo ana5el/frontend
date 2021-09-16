@@ -1,0 +1,40 @@
+<div class="bg-login">
+  <div class="test" nz-row nzJustify="center">
+    <div nz-col nzSpan="12">
+      <form
+        nz-form
+        class="login-form"
+        [formGroup]="totpForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <nz-form-item nzJustify="center">
+          <img src="../../assets/img/login-photo.png" width="60%" />
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your password!">
+            <nz-input-group
+              nzPrefixIcon="qrcode"
+              class="ng-tns-c177-823 ant-input-affix-wrapper"
+            >
+              <input
+                nz-input
+                type="number"
+                class="ant-input"
+                formControlName="code"
+                placeholder="Code de vérification"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <button
+          nz-button
+          nzType="primary"
+          class="login-form-button login-form-margin"
+        >
+          Connexion
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

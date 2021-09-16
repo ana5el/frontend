@@ -1,0 +1,49 @@
+<nz-divider [nzText]="text">
+  <ng-template #text>
+    <i class="fa fa-university" aria-hidden="true"></i> GESTION AAL
+  </ng-template>
+</nz-divider>
+<agm-map *ngIf="isLoaded" (mapReady)="onMapReady($event)">
+  <agm-polygon
+    *ngFor="let aal of filteredAals"
+    [paths]="aal.zone.path"
+    [strokeColor]="'#ffcca90b'"
+    [strokeOpacity]="0.2"
+    [fillColor]="aal.zone.style"
+    [fillOpacity]="0.6"
+    (polyClick)="infowindow.open()"
+  >
+    <agm-info-window
+      #infowindow
+      [latitude]="getCenter(aal.zone.path).lat"
+      [longitude]="getCenter(aal.zone.path).lng"
+    >
+      <div class="box">
+        <div>
+          <h3>{{ aal.labelFr }}</h3>
+        </div>
+        <div>
+          <i class="fa fa-map-marker" aria-hidden="true"></i> <i>Address</i>
+        </div>
+        <div><i class="fa fa-phone" aria-hidden="true"></i> {{ aal.tel }}</div>
+        <div
+          style="justify-content: space-around; display: flex; margin-top: 5px"
+        >
+          <div>
+            <button nz-button style="margin-right: 10px">Modifier</button>
+          </div>
+          <div>
+            <button
+              nz-button
+              nzType="primary"
+              nzDanger
+              (click)="deleteAal(aal.id)"
+            >
+              Supprimer
+            </button>
+          </div>
+        </div>
+      </div>
+    </agm-info-window>
+  </agm-polygon>
+</agm-map>

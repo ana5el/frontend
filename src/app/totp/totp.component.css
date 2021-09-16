@@ -1,0 +1,30 @@
+/* .vertical-offset-100 {
+  padding-top: 100px;
+} */
+
+.login-form {
+  max-width: 100%;
+}
+
+.login-form-margin {
+  margin-bottom: 16px;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+.bg-login {
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../assets/img/landing-background.png");
+  display: flex;
+}
+
+.test {
+  margin: auto;
+}

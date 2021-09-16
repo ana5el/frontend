@@ -1,0 +1,52 @@
+<nz-table #basicTable [nzSize]="'small'" [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Nom d'utilisateur</th>
+      <th>Profil</th>
+      <th>CIN</th>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Téléphone</th>
+      <th>Affectation</th>
+      <th>Grade</th>
+      <th>Statut</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.age }}</td>
+      <td>{{ data.address }}</td>
+      <td>
+        <a>Action 一 {{ data.name }}</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a>Delete</a>
+      </td>
+    </tr> -->
+    <tr>
+      <td>anas.elmrabti</td>
+      <td>WALI</td>
+      <td>J529628</td>
+      <td>EL MRABTI</td>
+      <td>Anas</td>
+      <td>0771807499</td>
+      <td>Préfecture AIO</td>
+      <td>10</td>
+      <td>
+        <nz-switch
+          [ngModel]="true"
+          [nzCheckedChildren]="checkedTemplate"
+          [nzUnCheckedChildren]="unCheckedTemplate"
+        ></nz-switch>
+        <ng-template #checkedTemplate
+          ><i nz-icon nzType="check"></i
+        ></ng-template>
+        <ng-template #unCheckedTemplate
+          ><i nz-icon nzType="close"></i
+        ></ng-template>
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
+</nz-table>

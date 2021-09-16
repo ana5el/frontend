@@ -1,0 +1,237 @@
+<nz-divider [nzText]="text" style="margin-bottom: 40px">
+  <ng-template #text>
+    <i nz-icon nzType="file-done" nzTheme="outline"></i>
+    {{ "CERTIFICAT_RESIDENCE" | translate }}
+  </ng-template>
+</nz-divider>
+<!-- {{ form.value | json }} -->
+<!-- {{ addr | json }} -->
+<nz-steps [nzCurrent]="current">
+  <nz-step nzTitle="{{ 'info' | translate }}" (click)="current = 0"></nz-step>
+  <nz-step
+    nzTitle="{{ 'address' | translate }}"
+    (click)="current = 1"
+  ></nz-step>
+  <nz-step
+    nzTitle="{{ 'verification' | translate }}"
+    (click)="current = 2"
+  ></nz-step>
+</nz-steps>
+
+<div class="steps-content">
+  <!-- <div *ngIf="current === 0" style="padding: 10px 40px">
+    <app-info-personneles [(form)]="form"></app-info-personneles>
+  </div> -->
+  <div *ngIf="current === 0" style="padding: 10px 40px">
+    <div nz-row>
+      <div nz-col nzSpan="8" nzOffset="8">
+        <label for="cin" style="float: left"
+          >CIN<span class="required">*</span></label
+        >
+        <label for="cin" style="float: right"
+          ><span class="required">*</span>رقم البطاقةالوطنية</label
+        >
+        <input nz-input type="text" id="cin" [(ngModel)]="cin" />
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="8" nzOffset="8" style="margin-top: 15px">
+        <button
+          nz-button
+          nzType="primary"
+          style="padding: 8px; font-size: larger; width: auto; height: auto"
+          (click)="next()"
+        >
+          SUIVANT / التالي
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="current === 1">
+    <app-show-addrs [(addr)]="addr"></app-show-addrs>
+    <div nz-row>
+      <div nz-col nzSpan="8" nzOffset="8">
+        <h1>"{{ addr }}"</h1>
+      </div>
+      <div nz-col nzSpan="8" nzOffset="8">
+        <button
+          nz-button
+          nzType="primary"
+          style="padding: 8px; font-size: larger; width: auto; height: auto"
+          (click)="next()"
+        >
+          SUIVANT / التالي
+        </button>
+      </div>
+      <div nz-col nzSpan="8" nzOffset="8" style="margin-top: 15px">
+        <button
+          nz-button
+          nzType="default"
+          style="
+            padding: 8px;
+            font-size: larger;
+            width: auto;
+            height: auto;
+            margin-bottom: 20px;
+          "
+          (click)="pre()"
+        >
+          PRECEDENT / السابق
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="current === 2" style="padding: 10px 40px">
+    <div nz-row>
+      <div nz-col nzSpan="8" nzOffset="8" style="margin-top: 15px">
+        <button
+          nz-button
+          nzType="primary"
+          style="padding: 8px; font-size: larger; width: auto; height: auto"
+          (click)="next()"
+        >
+          IMPREMER / طباعة
+        </button>
+      </div>
+      <div nz-col nzSpan="8" nzOffset="8" style="margin-top: 15px">
+        <button
+          nz-button
+          nzType="default"
+          style="padding: 8px; font-size: larger; width: auto; height: auto"
+          (click)="openPdf()"
+        >
+          CONSULTER / التحقق
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- <div *ngIf="current === 2">
+    <div nz-row style="background: white">
+      <div nz-col nzSpan="8"></div>
+      <div nz-col nzSpan="8">
+        <div>
+          <div>
+            <u><h3>CERTIFICAT DE RESIDENCE</h3></u>
+          </div>
+          <div>
+            <u><h3>شهادة السكنى</h3></u>
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="8"></div>
+    </div>
+    <div nz-row style="background: #fff">
+      <div nz-col nzSpan="24" style="padding: 25px">
+        <table width="100%">
+          <colgroup>
+            <col width="20%" />
+            <col width="40%" />
+            <col width="20%" />
+            <col width="20%" />
+          </colgroup>
+          <tbody>
+            <tr>
+              <td class="u-align-left"><b>PRENOM</b></td>
+              <td class="u-align-left">{{ form.get("prenomFr")?.value }}</td>
+              <td class="u-align-right">{{ form.get("prenomAr")?.value }}</td>
+              <td class="u-align-right"><b>الاسم الشخصي</b></td>
+            </tr>
+            <tr>
+              <td class="u-align-left"><b>NOM</b></td>
+              <td class="u-align-left">{{ form.get("nomFr")?.value }}</td>
+              <td class="u-align-right">{{ form.get("nomAr")?.value }}</td>
+              <td class="u-align-right"><b>الاسم العائلي</b></td>
+            </tr>
+            <tr>
+              <td class="u-align-left"><b>NE(E) LE</b></td>
+              <td class="u-align-left">
+                {{ form.get("lieuNaisance")?.value }}
+              </td>
+              <td class="u-align-right">text</td>
+              <td class="u-align-right"><b>المزداد في</b></td>
+            </tr>
+            <tr>
+              <td class="u-align-left"><b>FILS (FILLE) DE</b></td>
+              <td class="u-align-left">text</td>
+              <td class="u-align-right">text</td>
+              <td class="u-align-right"><b>اسم الاب</b></td>
+            </tr>
+            <tr>
+              <td class="u-align-left"><b>ET</b></td>
+              <td class="u-align-left">text</td>
+              <td class="u-align-right">text</td>
+              <td class="u-align-right"><b>اسم الام</b></td>
+            </tr>
+            <tr>
+              <td class="u-align-left"><b>SITUATION FAMILLE</b></td>
+              <td class="u-align-left">text</td>
+              <td class="u-align-right">text</td>
+              <td class="u-align-right"><b>الحالة العائلية</b></td>
+            </tr>
+            <tr>
+              <td class="u-align-left"><b>PROFESSION</b></td>
+              <td class="u-align-left">{{ form.get("profession")?.value }}</td>
+              <td class="u-align-right">{{ form.get("profession")?.value }}</td>
+              <td class="u-align-right"><b>المهنة</b></td>
+            </tr>
+            <tr>
+              <td class="u-align-left"><b>NUMERO CIN</b></td>
+              <td class="u-align-left">{{ form.get("cin")?.value }}</td>
+              <td class="u-align-right">{{ form.get("cin")?.value }}</td>
+              <td class="u-align-right"><b>رقم ب.و.ط</b></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="u-align-left">
+                <u
+                  ><b
+                    >DEMEURANT(E) A L'ADRESSE SUIVANTE DEPUIS PLUS DE TROIS
+                    MOIS</b
+                  ></u
+                >
+              </td>
+              <td colspan="2" class="u-align-right">
+                <u><b>قاطن(ة) بالعنوان التالي ما يزيد عن ثلاثة اشهر</b></u>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">{{ addr }}</td>
+              <td colspan="2">{{ addr }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div nz-row style="background: white">
+      <div
+        nz-col
+        nzSpan="10"
+        class="u-align-right"
+        style="display: flex; align-items: center"
+      >
+        <u><h3>FAIT A AGADIR LE XX/XX/2021</h3></u>
+      </div>
+      <div nz-col nzSpan="4" style="text-align: center">
+        <img src="../../../assets/img/qr.png" alt="" width="45%" />
+      </div>
+      <div
+        nz-col
+        nzSpan="10"
+        class="u-align-left"
+        style="vertical-align: bottom"
+      >
+        <u><h3>SIGNE :</h3></u>
+      </div>
+    </div>
+  </div> -->
+</div>
+<!-- <div class="steps-action">
+  <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+    <span>{{ "previous" | translate }}</span>
+  </button>
+  <button nz-button nzType="default" (click)="next()" *ngIf="current < 2">
+    <span>{{ "next" | translate }}</span>
+  </button>
+  <button nz-button nzType="primary" (click)="done()" *ngIf="current === 2">
+    <span>{{ "done" | translate }}</span>
+  </button>
+</div> -->

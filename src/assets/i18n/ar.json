@@ -1,0 +1,13 @@
+{
+  "header": {
+    "logout": "خروج",
+    "lng": "Français"
+  },
+  "CERTIFICAT_RESIDENCE": "شهادة السكنى",
+  "info": "الملومات الشخصية",
+  "address": "العنوان",
+  "verification": "التحقق / طباعة",
+  "next": "التالي",
+  "previous": "السابق",
+  "done": "انهاء"
+}

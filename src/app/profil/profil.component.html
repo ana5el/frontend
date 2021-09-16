@@ -1,0 +1,77 @@
+<nz-divider [nzText]="text">
+  <ng-template #text>
+    <i nz-icon nzType="user" nzTheme="outline"></i> MON PROFILE
+  </ng-template>
+</nz-divider>
+<div nz-row style="margin-top: 30px">
+  <div nz-col nzSpan="4" style="text-align: center">
+    <nz-avatar
+      [nzShape]="'square'"
+      [nzSize]="120"
+      [nzIcon]="'user'"
+    ></nz-avatar>
+  </div>
+  <div nz-col nzSpan="10">
+    <table width="100%">
+      <tr>
+        <td colspan="2">
+          <h3><u>Employee Information:</u></h3>
+        </td>
+      </tr>
+      <tr>
+        <td>First Name</td>
+        <td>: test</td>
+      </tr>
+      <tr>
+        <td>Last Name</td>
+        <td>: test</td>
+      </tr>
+      <tr>
+        <td>Display Name</td>
+        <td>: test test</td>
+      </tr>
+      <tr>
+        <td>Gender</td>
+        <td>: Male</td>
+      </tr>
+      <tr>
+        <td>CIN</td>
+        <td>: J000000</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="margin-top: 10px">
+          <h3><u>Employement Information:</u></h3>
+        </td>
+      </tr>
+      <tr>
+        <td>Employee ID</td>
+        <td>: #01</td>
+      </tr>
+      <tr>
+        <td>Employee Position</td>
+        <td>: CAID</td>
+      </tr>
+      <tr>
+        <td>Grade</td>
+        <td>: X</td>
+      </tr>
+      <tr>
+        <td>AAL</td>
+        <td>: 3EME ANNEXE ADMINISTRATIVE</td>
+      </tr>
+    </table>
+  </div>
+  <div nz-col nzSpan="10">
+    <h3><u>Authenticaton Information :</u></h3>
+    <table width="80%">
+      <tr>
+        <td>Login Name</td>
+        <td>: test</td>
+      </tr>
+      <tr>
+        <td>Status</td>
+        <td>: Active</td>
+      </tr>
+    </table>
+  </div>
+</div>

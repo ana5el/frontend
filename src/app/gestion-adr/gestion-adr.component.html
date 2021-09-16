@@ -1,0 +1,66 @@
+<nz-divider [nzText]="text" nzOrientation="left"></nz-divider>
+<ng-template #text>
+  <i nz-icon nzType="environment" nzTheme="outline"></i> Ajouter une adresse
+</ng-template>
+<div nz-row>
+  <div nz-col nzSpan="12" id="map">
+    <agm-map
+      [latitude]="lat"
+      [longitude]="lng"
+      (mapReady)="onMapReady($event)"
+    ></agm-map>
+  </div>
+  <div nz-col nzSpan="12" id="details">
+    <div nz-row>
+      <div nz-col nzSpan="24">
+        {{ pointList | json }}
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="24">
+        Type :{{ selectedType | json }}
+        <nz-select
+          [(ngModel)]="selectedType"
+          nzAllowClear
+          nzPlaceHolder="Choisir"
+        >
+          <nz-option
+            *ngFor="let type of typeLogementList"
+            [nzValue]="type"
+            [nzLabel]="type.libelleFr"
+          ></nz-option>
+        </nz-select>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="24">
+        Info :
+        <textarea nz-input rows="3" [(ngModel)]="info"></textarea>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="24">
+        superficie :
+        <input nz-input [(ngModel)]="selectedArea" [disabled]="true" />
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="24">
+        Rue :
+        <input nz-input [(ngModel)]="rue" />
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="8">
+        <button
+          nz-button
+          nzType="primary"
+          (click)="save()"
+          style="margin-top: 5px"
+        >
+          Save Address
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

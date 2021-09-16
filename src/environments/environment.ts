@@ -3,9 +3,52 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'http://localhost:8080/api',
+  maps_api_key: 'AIzaSyB3bABW7kKWoZmbDMAjRsR1aFuW4m10bcg',
+  mapStyle: [
+    {
+      featureType: 'administrative',
+      elementType: 'geometry',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'poi',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'road',
+      elementType: 'labels.icon',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'transit',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+  ],
 };
 
+/*
+AIzaSyDEsvxPtqhmJT2KksddvhDghIaKeytrB6Q
+:)
+AIzaSyB3bABW7kKWoZmbDMAjRsR1aFuW4m10bcg
+*/
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

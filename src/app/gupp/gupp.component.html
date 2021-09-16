@@ -1,0 +1,43 @@
+<nz-divider nzText="Gestion des utilisateurs"></nz-divider>
+<nz-tabset nzType="card">
+  <nz-tab [nzTitle]="'Gestion des utilisateurs'">
+    <div nz-row>
+      <!-- <div nz-col nzSpan="24">
+        <app-add-user></app-add-user>
+      </div> -->
+      <button
+        nz-button
+        nzType="primary"
+        nzSize="default"
+        nzShape="round"
+        (click)="isVisible = true"
+      >
+        <i nz-icon nzType="plus"></i>
+        Ajouter
+      </button>
+    </div>
+    <div nz-row style="margin: 20px 0px">
+      <div nz-col nzSpan="24">
+        <app-users-list></app-users-list>
+      </div>
+    </div>
+  </nz-tab>
+  <nz-tab [nzTitle]="'Gestion des profils'">
+    <app-profil-privilleges></app-profil-privilleges>
+  </nz-tab>
+
+  <nz-tab [nzTitle]="'Gestion des privillèges'"
+    >Content of Tab Pane 'Gestion des privillèges '</nz-tab
+  >
+</nz-tabset>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="AJOUTER UN UTILISATEUR"
+  (nzOnCancel)="handleCancel()"
+  nzWidth="650px"
+>
+  <ng-container *nzModalContent>
+    <app-add-user></app-add-user>
+  </ng-container>
+</nz-modal>
