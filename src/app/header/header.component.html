@@ -6,6 +6,7 @@
           src="../../assets/img/logo.png"
           width="85%"
           alt="prefecture agadir"
+          style="padding-top: 2px"
         />
       </a>
     </div>
@@ -67,35 +68,28 @@
         </li>
       </ul>
     </div>
-    <div nz-col nzSpan="4" nzOffset="2">
-      <div nz-row style="text-align: right">
-        <div nz-col nzSpan="12">
+    <div nz-col nzSpan="4" nzOffset="2" style="padding-left: 0px !important">
+      <ul nz-menu nzMode="horizontal" style="border-bottom: 0px">
+        <li nz-menu-item>
           <button nz-button nzShape="round" (click)="changeLocal()">
             {{ "header.lng" | translate }}
           </button>
-        </div>
-        <div nz-col nzSpan="8">
-          {{ currentuser?.username }}
+        </li>
+        <li nz-menu-item style="padding-right: 0px !important">
           <nz-avatar
             nz-dropdown
             [nzDropdownMenu]="menu"
             nzIcon="user"
           ></nz-avatar>
-        </div>
-      </div>
-      <!-- <button
-        nz-button
-        style="margin: 5px"
-        nzShape="round"
-        (click)="changeLocal()"
-      >
-        {{ "header.lng" | translate }}
-      </button>
-      {{ currentuser?.username }}
-      <nz-avatar nz-dropdown [nzDropdownMenu]="menu" nzIcon="user"></nz-avatar> -->
+        </li>
+      </ul>
     </div>
+
     <nz-dropdown-menu #menu="nzDropdownMenu">
       <ul nz-menu nzSelectable>
+        <li nz-menu-item>
+          <h3 style="text-transform: uppercase">{{ currentuser?.username }}</h3>
+        </li>
         <li nz-menu-item (click)="logout()">
           {{ "header.logout" | translate }}
         </li>

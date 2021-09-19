@@ -18,28 +18,26 @@ export class PrivilegeService {
 
   create(p: Privilege): Observable<any> {
     return this.http.post(
-      `${environment.apiUrl}/api/privileges`,
+      `${environment.apiUrl}/privileges`,
       JSON.stringify(p),
       this.httpOptions
     );
   }
   getAll(): Observable<Privilege[]> {
-    return this.http.get<Privilege[]>(`${environment.apiUrl}/api/privileges`);
+    return this.http.get<Privilege[]>(`${environment.apiUrl}/privileges`);
   }
 
   getById(id: number): Observable<Privilege> {
-    return this.http.get<Privilege>(
-      `${environment.apiUrl}/api/privileges/${id}`
-    );
+    return this.http.get<Privilege>(`${environment.apiUrl}/privileges/${id}`);
   }
 
   delete(id: number) {
-    return this.http.delete(`${environment.apiUrl}/api/privileges/${id}`);
+    return this.http.delete(`${environment.apiUrl}/privileges/${id}`);
   }
 
   update(id: number, p: Privilege): Observable<Privilege> {
     return this.http.put<Privilege>(
-      `${environment.apiUrl}/api/privileges/${id}`,
+      `${environment.apiUrl}/privileges/${id}`,
       JSON.stringify(p),
       this.httpOptions
     );

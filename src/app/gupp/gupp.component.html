@@ -1,4 +1,9 @@
-<nz-divider nzText="Gestion des utilisateurs"></nz-divider>
+<nz-divider [nzText]="text">
+  <ng-template #text>
+    <i class="fa fa-users" aria-hidden="true"></i>
+    Gestion des utilisateurs
+  </ng-template>
+</nz-divider>
 <nz-tabset nzType="card">
   <nz-tab [nzTitle]="'Gestion des utilisateurs'">
     <div nz-row>
@@ -22,19 +27,21 @@
       </div>
     </div>
   </nz-tab>
-  <nz-tab [nzTitle]="'Gestion des profils'">
+  <nz-tab [nzTitle]="'Gestion des profiles & privillèges'">
     <app-profil-privilleges></app-profil-privilleges>
   </nz-tab>
 
-  <nz-tab [nzTitle]="'Gestion des privillèges'"
+  <!--<nz-tab [nzTitle]="'Gestion des privillèges'"
     >Content of Tab Pane 'Gestion des privillèges '</nz-tab
-  >
+  >-->
 </nz-tabset>
 
 <nz-modal
   [(nzVisible)]="isVisible"
   nzTitle="AJOUTER UN UTILISATEUR"
   (nzOnCancel)="handleCancel()"
+  (nzOnOk)="createUser()"
+  nzOkText="AJOUTER"
   nzWidth="650px"
 >
   <ng-container *nzModalContent>

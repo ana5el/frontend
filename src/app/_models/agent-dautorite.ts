@@ -1,4 +1,5 @@
 import { Aal } from './aal';
+import { Grade } from './grade';
 import { Zone } from './zone';
 export interface AgentDAutorite {
   id?: number;
@@ -6,7 +7,7 @@ export interface AgentDAutorite {
   nom: string;
   prenom: string;
   tel: string;
-  grade: any;
+  grade: Grade;
   aal: Aal;
   zone: Zone;
 }

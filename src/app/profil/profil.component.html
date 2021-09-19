@@ -1,4 +1,4 @@
-<nz-divider [nzText]="text">
+<!--<nz-divider [nzText]="text">
   <ng-template #text>
     <i nz-icon nzType="user" nzTheme="outline"></i> MON PROFILE
   </ng-template>
@@ -73,5 +73,66 @@
         <td>: Active</td>
       </tr>
     </table>
+  </div>
+</div>
+-->
+<div nz-row style="padding: 20px 0">
+  <div nz-col nzSpan="6">
+    <ul nz-menu>
+      <li nz-menu-item (click)="(showIdAndName)" nzSelected>ID and Name</li>
+      <li nz-menu-item (click)="(showContactInfo)">Contact Information</li>
+      <li nz-menu-item (click)="(showOther)">Other</li>
+    </ul>
+  </div>
+  <div nz-col nzSpan="18">
+    <div nz-row>
+      <div nz-col nzSpan="18" style="padding-left: 20px">
+        <table>
+          <tr>
+            <td>Employee Number</td>
+            <th>AEC123</th>
+          </tr>
+          <tr>
+            <td>Last Name</td>
+            <th>last</th>
+          </tr>
+          <tr>
+            <td>First Name</td>
+            <th>first</th>
+          </tr>
+          <tr>
+            <td>CIN</td>
+            <th>J529628</th>
+          </tr>
+          <tr>
+            <td>Designation</td>
+            <th>Engineer</th>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <th>last.first@prefectureaio.com</th>
+          </tr>
+          <tr>
+            <td>AAL D'affectation</td>
+            <th>Péfecture AIO</th>
+          </tr>
+          <tr>
+            <td>Profil</td>
+            <th>WALI</th>
+          </tr>
+          <tr>
+            <td>Grade</td>
+            <th>X</th>
+          </tr>
+          <tr>
+            <td>Date of Joining</td>
+            <th>DD/MM/YYYY</th>
+          </tr>
+        </table>
+      </div>
+      <div nz-col nzSpan="6" style="text-align: right">
+        <img [src]="qrCode" alt="Internal Error" width="60%" />
+      </div>
+    </div>
   </div>
 </div>

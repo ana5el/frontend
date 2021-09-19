@@ -42,4 +42,12 @@ export class ProfileService {
   delete(id: number) {
     return this.http.delete(`${environment.apiUrl}/profiles/${id}`);
   }
+  //
+  updatePrivileges(id: number, privs: number[]): Observable<Profile> {
+    return this.http.put<Profile>(
+      `${environment.apiUrl}/profiles/${id}`,
+      JSON.stringify(privs),
+      this.httpOptions
+    );
+  }
 }

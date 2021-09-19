@@ -1,35 +1,34 @@
 import { Component } from '@angular/core';
-
-interface Person {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-}
+import { NzModalRef } from 'ng-zorro-antd/modal';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-users-list',
-  templateUrl: './users-list.component.html'
+  templateUrl: './users-list.component.html',
 })
 export class UsersListComponent {
-  listOfData: Person[] = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    }
-  ];
+  users!: any[];
+  isVisible: boolean = false;
+
+  constructor(private userService: UserService) {}
+  ngOnInit() {
+    this.userService.getAll().subscribe(
+      (data) => {
+        this.users = data;
+        console.log(this.users);
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  downloadPdf(id: number) {
+    this.userService.downloadPdf(id);
+  }
+  deleteUser(id: number) {
+    this.userService.delete(id);
+    this.users = this.users.filter((user) => user.id != id);
+  }
+
+  handleCancel() {}
+  createUser() {}
 }

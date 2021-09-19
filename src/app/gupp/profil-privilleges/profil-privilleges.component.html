@@ -1,4 +1,4 @@
-<nz-table nzBordered [nzSize]="'small'" #basicTable [nzData]="listOfData">
+<!--<nz-table nzBordered [nzSize]="'small'" #basicTable [nzData]="listOfData">
   <thead>
     <tr>
       <th rowspan="2">PROFIL</th>
@@ -24,6 +24,38 @@
         </td>
       </ng-container>
       <td></td>
+    </tr>
+  </tbody>
+  <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
+  <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
+</nz-table>
+-->
+<nz-table nzBordered [nzSize]="'small'" #basicTable [nzData]="profiles">
+  <thead>
+    <tr>
+      <th nzWidth="60%">PROFIL</th>
+      <th>Privillèges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let profile of basicTable.data">
+      <td>{{ profile.labelFr }}</td>
+      <td>
+        <nz-select
+          nzMode="multiple"
+          nzPlaceHolder="Please select"
+          style="width: 500px"
+          [(ngModel)]="listOfSelectedValueCache[profile.id]"
+          (ngModelChange)="updateProfile(profile.id)"
+        >
+          <nz-option
+            *ngFor="let priv of privileges"
+            [nzLabel]="priv.labelFr"
+            [nzValue]="priv.id"
+          >
+          </nz-option>
+        </nz-select>
+      </td>
     </tr>
   </tbody>
   <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>

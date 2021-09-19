@@ -28,6 +28,8 @@ export class AppComponent implements OnInit {
         this.direct = 'ltr';
       }
     });
+
+    console.log(this.currentuser?.authorities);
   }
 
   isAuthenticated() {

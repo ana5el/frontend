@@ -41,6 +41,9 @@ import { CertificatResidenceComponent } from './services/certificat-residence/ce
 import { ProfilComponent } from './profil/profil.component';
 import { InfoPersonnelesComponent } from './services/certificat-residence/info-personneles/info-personneles.component';
 import { AddCitoyenComponent } from './gestionCitoyen/add-citoyen/add-citoyen.component';
+import { IdAndNameComponent } from './profil/id-and-name/id-and-name.component';
+import { ContactInfoComponent } from './profil/contact-info/contact-info.component';
+import { UpdateUserComponent } from './gupp/update-user/update-user.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -73,6 +76,9 @@ registerLocaleData(fr);
     ProfilComponent,
     InfoPersonnelesComponent,
     AddCitoyenComponent,
+    IdAndNameComponent,
+    ContactInfoComponent,
+    UpdateUserComponent,
   ],
   imports: [
     BrowserModule,

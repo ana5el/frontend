@@ -1,4 +1,4 @@
-<nz-table #basicTable [nzSize]="'small'" [nzData]="listOfData">
+<nz-table #table [nzSize]="'small'" [nzData]="users">
   <thead>
     <tr>
       <th>Nom d'utilisateur</th>
@@ -9,35 +9,26 @@
       <th>Téléphone</th>
       <th>Affectation</th>
       <th>Grade</th>
-      <th>Statut</th>
+      <th>Active</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
-    <!-- <tr *ngFor="let data of basicTable.data">
-      <td>{{ data.name }}</td>
-      <td>{{ data.age }}</td>
-      <td>{{ data.address }}</td>
-      <td>
-        <a>Action 一 {{ data.name }}</a>
-        <nz-divider nzType="vertical"></nz-divider>
-        <a>Delete</a>
-      </td>
-    </tr> -->
-    <tr>
-      <td>anas.elmrabti</td>
-      <td>WALI</td>
-      <td>J529628</td>
-      <td>EL MRABTI</td>
-      <td>Anas</td>
-      <td>0771807499</td>
-      <td>Préfecture AIO</td>
-      <td>10</td>
+    <tr *ngFor="let data of table.data">
+      <td>{{ data.username }}</td>
+      <td>{{ data.profile.labelFr }}</td>
+      <td>{{ data.agentAutorite?.cin }}</td>
+      <td>{{ data.agentAutorite?.nom }}</td>
+      <td>{{ data.agentAutorite?.prenom }}</td>
+      <td>{{ data.agentAutorite?.tel }}</td>
+      <td>{{ data.agentAutorite?.aal?.labelFr }}</td>
+      <td>{{ data.agentAutorite?.grade?.labelFr }}</td>
       <td>
         <nz-switch
-          [ngModel]="true"
+          [ngModel]="data.active"
           [nzCheckedChildren]="checkedTemplate"
           [nzUnCheckedChildren]="unCheckedTemplate"
+          [nzDisabled]="true"
         ></nz-switch>
         <ng-template #checkedTemplate
           ><i nz-icon nzType="check"></i
@@ -46,7 +37,40 @@
           ><i nz-icon nzType="close"></i
         ></ng-template>
       </td>
-      <td></td>
+      <td>
+        <i
+          nz-icon
+          nzType="file-pdf"
+          nzTheme="outline"
+          style="font-size: medium"
+          (click)="downloadPdf(data.id)"
+        ></i>
+        <nz-divider nzType="vertical"></nz-divider>
+        <i nz-icon nzType="history" nzTheme="outline"></i>
+        <nz-divider nzType="vertical"></nz-divider>
+        <i nz-icon nzType="sync" nzTheme="outline"></i>
+        <nz-divider nzType="vertical"></nz-divider>
+        <i
+          nz-icon
+          nzType="delete"
+          nzTheme="outline"
+          nz-popconfirm
+          nzPopconfirmTitle="Vous etre sur ?"
+          (nzOnConfirm)="deleteUser(data.id)"
+          [nzPopconfirmPlacement]="'topRight'"
+        ></i>
+      </td>
     </tr>
   </tbody>
 </nz-table>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="AJOUTER UN UTILISATEUR"
+  (nzOnCancel)="handleCancel()"
+  nzWidth="650px"
+>
+  <ng-container *nzModalContent>
+    <app-update-user></app-update-user>
+  </ng-container>
+</nz-modal>
