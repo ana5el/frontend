@@ -30,7 +30,21 @@
       [fillColor]="'#ff0000'"
       [strokeOpacity]="0"
       [fillOpacity]="0.7"
-    ></agm-polygon>
+      (polyClick)="getVillaAdresse(villa); infowindowV.open()"
+    >
+      <agm-info-window
+        #infowindowV
+        [latitude]="getCenter(villa.path).lat"
+        [longitude]="getCenter(villa.path).lng"
+      >
+        <div style="max-width: auto">
+          <h4>
+            Villa N° {{ villa.numero }} rue {{ villa.rue }} quartier
+            {{ villa.quartier }}
+          </h4>
+        </div>
+      </agm-info-window>
+    </agm-polygon>
   </ng-container>
 
   <ng-container *ngIf="immeublesLoaded">

@@ -14,6 +14,8 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Role } from './_models/role';
+import { InfoPersonnelesComponent } from './services/certificat-residence/info-personneles/info-personneles.component';
+import { AddCitoyenComponent } from './gestionCitoyen/add-citoyen/add-citoyen.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -43,6 +45,7 @@ const routes: Routes = [
     data: { roles: [Role.admin] },
   },
   { path: 'drawing', component: DrawingZoneComponent },
+  { path: 'gcitoyens', component: AddCitoyenComponent },
   { path: 'show-addrs', component: ShowAddrsComponent },
   { path: 'certificat-residence', component: CertificatResidenceComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },

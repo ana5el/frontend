@@ -9,3 +9,7 @@
 .u-align-left {
   text-align: left;
 }
+
+[nz-button] {
+  margin-right: 8px;
+}

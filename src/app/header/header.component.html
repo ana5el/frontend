@@ -41,11 +41,11 @@
         </li>
         <li
           nz-menu-item
-          routerLink="/gaag"
+          routerLink="/gcitoyens"
           routerLinkActive="active"
           *ngIf="isAdmin"
         >
-          GAAG
+          G. Citoyens
         </li>
         <li
           nz-menu-item
@@ -68,14 +68,15 @@
         </li>
       </ul>
     </div>
-    <div nz-col nzSpan="4" nzOffset="2" style="padding-left: 0px !important">
-      <ul nz-menu nzMode="horizontal" style="border-bottom: 0px">
-        <li nz-menu-item>
+
+    <div nz-col nzSpan="3" nzOffset="3">
+      <ul nz-menu nzMode="horizontal" style="padding: 1px; border-bottom: 0px">
+        <li nz-menu-item style="width: min-content">
           <button nz-button nzShape="round" (click)="changeLocal()">
             {{ "header.lng" | translate }}
           </button>
         </li>
-        <li nz-menu-item style="padding-right: 0px !important">
+        <li nz-menu-item style="width: min-content">
           <nz-avatar
             nz-dropdown
             [nzDropdownMenu]="menu"

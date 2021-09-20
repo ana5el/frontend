@@ -3,8 +3,8 @@
     <i nz-icon nzType="environment" nzTheme="outline"></i> AJOUTER UNE ADRESSE
   </ng-template>
 </nz-divider>
-{{ form.value | json }}
-{{ pointList | json }}
+<!--{{ form.value | json }}
+{{ pointList | json }}-->
 <agm-map
   [latitude]="lat"
   [longitude]="lng"
@@ -122,7 +122,7 @@
         </nz-form-item>
         <nz-form-item *ngIf="form.get('type')?.value === 'immeuble'">
           <nz-form-label nzFor="nomAr" [nzSpan]="9" nzRequired
-            >N° d'Immeuble | Nom (ar)
+            >N° Imm | Nom (ar)
           </nz-form-label>
           <nz-form-control [nzSpan]="17">
             <input nz-input type="text" id="nomAr" formControlName="nomAr" />
@@ -130,7 +130,7 @@
         </nz-form-item>
         <nz-form-item *ngIf="form.get('type')?.value === 'immeuble'">
           <nz-form-label nzFor="nomFr" [nzSpan]="9" nzRequired
-            >N° d'Immeuble | Nom (fr)</nz-form-label
+            >N° Imm | Nom (fr)</nz-form-label
           >
           <nz-form-control [nzSpan]="17">
             <input nz-input type="text" id="nomFr" formControlName="nomFr" />
@@ -159,7 +159,9 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-control [nzSpan]="24">
-            <button nz-button type="submit">Ajouter</button>
+            <button nz-button type="submit" style="margin-right: 5px">
+              Ajouter
+            </button>
             <button nz-button type="reset">Annuler</button>
           </nz-form-control>
         </nz-form-item>

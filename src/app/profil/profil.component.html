@@ -86,23 +86,31 @@
   </div>
   <div nz-col nzSpan="18">
     <div nz-row>
-      <div nz-col nzSpan="18" style="padding-left: 20px">
+      <div nz-col nzSpan="4" style="padding-left: 20px">
+        <!--<img [src]="qrCode" alt="Internal Error" width="60%" />-->
+        <nz-avatar
+          [nzShape]="'square'"
+          [nzSize]="100"
+          [nzIcon]="'user'"
+        ></nz-avatar>
+      </div>
+      <div nz-col nzSpan="18" style="padding-left: 5px">
         <table>
           <tr>
             <td>Employee Number</td>
-            <th>AEC123</th>
+            <th>{{ currentUser?.id }}</th>
           </tr>
           <tr>
             <td>Last Name</td>
-            <th>last</th>
+            <th>{{ currentUser?.agentAutorite.nom }}</th>
           </tr>
           <tr>
             <td>First Name</td>
-            <th>first</th>
+            <th>{{ currentUser?.agentAutorite.prenom }}</th>
           </tr>
           <tr>
             <td>CIN</td>
-            <th>J529628</th>
+            <th>{{ currentUser?.agentAutorite.cin }}</th>
           </tr>
           <tr>
             <td>Designation</td>
@@ -114,24 +122,21 @@
           </tr>
           <tr>
             <td>AAL D'affectation</td>
-            <th>Péfecture AIO</th>
+            <th>{{ currentUser?.agentAutorite.aal?.labelFr }}</th>
           </tr>
           <tr>
             <td>Profil</td>
-            <th>WALI</th>
+            <th>{{ currentUser?.profile.labelFr }}</th>
           </tr>
           <tr>
             <td>Grade</td>
-            <th>X</th>
+            <th>{{ currentUser?.agentAutorite.grade?.labelFr }}</th>
           </tr>
           <tr>
             <td>Date of Joining</td>
             <th>DD/MM/YYYY</th>
           </tr>
         </table>
-      </div>
-      <div nz-col nzSpan="6" style="text-align: right">
-        <img [src]="qrCode" alt="Internal Error" width="60%" />
       </div>
     </div>
   </div>

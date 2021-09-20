@@ -1,107 +1,106 @@
-<form [formGroup]="form">
-  <div nz-row>
-    <div nz-col nzSpan="8" nzOffset="8">
-      <label for="cin" style="float: left"
-        >CIN<span class="required">*</span></label
-      >
-      <label for="cin" style="float: right"
-        ><span class="required">*</span>رقم البطاقةالوطنية</label
-      >
-      <input nz-input type="text" id="cin" formControlName="cin" />
-    </div>
-  </div>
-  <div nz-row [nzGutter]="[16, 16]">
-    <!--------------------PRENOM ------------->
-    <div nz-col class="gutter-row" [nzSpan]="12">
-      <div class="u-align-left">
-        <label for="prenom">Prenom<span class="required">*</span></label>
-        <input nz-input type="text" id="prenom" formControlName="prenomFr" />
+<nz-divider [nzText]="text">
+  <ng-template #text>
+    <i class="fa fa-male" aria-hidden="true"></i>
+    Ajouter un cityoen
+  </ng-template>
+</nz-divider>
+<div>
+  <form>
+    <div nz-row>
+      <div nz-col nzSpan="8" nzOffset="8">
+        <label for="cin" style="float: left"
+          >CIN<span class="required">*</span></label
+        >
+        <label for="cin" style="float: right"
+          ><span class="required">*</span>رقم البطاقةالوطنية</label
+        >
+        <input nz-input type="text" id="cin" />
       </div>
     </div>
-    <div nz-col class="gutter-row" [nzSpan]="12">
-      <div class="u-align-right">
-        <label for="prenomar"
-          ><span class="required">*</span>الاسم الشخصي</label
-        >
-        <input nz-input type="text" id="prenomar" formControlName="prenomAr" />
+    <div nz-row [nzGutter]="[16, 16]">
+      <!--------------------PRENOM ------------->
+      <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="u-align-left">
+          <label for="prenom">Prenom<span class="required">*</span></label>
+          <input nz-input type="text" id="prenom" />
+        </div>
+      </div>
+      <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="u-align-right">
+          <label for="prenomar"
+            ><span class="required">*</span>الاسم الشخصي</label
+          >
+          <input nz-input type="text" id="prenomar" />
+        </div>
+      </div>
+      <!-------------  NOM -------------------->
+      <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="u-align-left">
+          <label for="nom">Nom<span class="required">*</span></label>
+          <input nz-input type="text" id="nom" />
+        </div>
+      </div>
+      <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="u-align-right">
+          <label for="nomar"
+            ><span class="required">*</span>الاسم العائلي</label
+          >
+          <input nz-input type="text" id="nomar" />
+        </div>
+      </div>
+      <!-------------  DATE / LIEU DE NAISSANCE -------------------->
+      <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="u-align-left">
+          <label for="datenaiss"
+            >Date de naissance<span class="required">*</span></label
+          >
+          <label for="datenaiss" style="float: right"
+            ><span class="required">*</span>تاريخ الازدياد</label
+          >
+          <nz-date-picker id="datenaiss" style="width: 100%"></nz-date-picker>
+        </div>
+      </div>
+      <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="u-align-right">
+          <label for="lieunaiss" style="float: left"
+            >Lieu de naissance<span class="required">*</span></label
+          >
+          <label for="lieunaiss" style="float: right"
+            ><span class="required">*</span>مكان الازدياد</label
+          >
+          <input nz-input type="text" id="lieunaiss" />
+        </div>
+      </div>
+      <!--------------------------------------------->
+      <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="u-align-left">
+          <label for="profession"
+            >Profession<span class="required">*</span></label
+          >
+          <label for="profession" style="float: right"
+            ><span class="required">*</span>المهنة</label
+          >
+          <nz-select id="profession" style="width: 100%"></nz-select>
+        </div>
+      </div>
+      <!------------------------------------------------->
+      <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="u-align-left">
+          <label for="situation"
+            >Situation familiale<span class="required">*</span></label
+          >
+          <label for="situation" style="float: right"
+            ><span class="required">*</span>الحالة العائلية</label
+          >
+          <nz-select id="situation" style="width: 100%"></nz-select>
+        </div>
       </div>
     </div>
-    <!-------------  NOM -------------------->
-    <div nz-col class="gutter-row" [nzSpan]="12">
-      <div class="u-align-left">
-        <label for="nom">Nom<span class="required">*</span></label>
-        <input nz-input type="text" id="nom" formControlName="nomFr" />
+    <div nz-row nzJustify="center" style="margin-top: 30px">
+      <div nz-col>
+        <button nz-button nzType="primary">Ajouter</button>
+        <button nz-button nzType="primary" nzDanger>Vider</button>
       </div>
     </div>
-    <div nz-col class="gutter-row" [nzSpan]="12">
-      <div class="u-align-right">
-        <label for="nomar"><span class="required">*</span>الاسم العائلي</label>
-        <input nz-input type="text" id="nomar" formControlName="nomAr" />
-      </div>
-    </div>
-    <!-------------  DATE / LIEU DE NAISSANCE -------------------->
-    <div nz-col class="gutter-row" [nzSpan]="12">
-      <div class="u-align-left">
-        <label for="datenaiss"
-          >Date de naissance<span class="required">*</span></label
-        >
-        <label for="datenaiss" style="float: right"
-          ><span class="required">*</span>تاريخ الازدياد</label
-        >
-        <nz-date-picker
-          id="datenaiss"
-          style="width: 100%"
-          formControlName="dateNaissance"
-        ></nz-date-picker>
-      </div>
-    </div>
-    <div nz-col class="gutter-row" [nzSpan]="12">
-      <div class="u-align-right">
-        <label for="lieunaiss" style="float: left"
-          >Lieu de naissance<span class="required">*</span></label
-        >
-        <label for="lieunaiss" style="float: right"
-          ><span class="required">*</span>مكان الازدياد</label
-        >
-        <input
-          nz-input
-          type="text"
-          id="lieunaiss"
-          formControlName="lieuNaissance"
-        />
-      </div>
-    </div>
-    <!--------------------------------------------->
-    <div nz-col class="gutter-row" [nzSpan]="12">
-      <div class="u-align-left">
-        <label for="profession"
-          >Profession<span class="required">*</span></label
-        >
-        <label for="profession" style="float: right"
-          ><span class="required">*</span>المهنة</label
-        >
-        <nz-select
-          id="profession"
-          style="width: 100%"
-          formControlName="profession"
-        ></nz-select>
-      </div>
-    </div>
-    <!------------------------------------------------->
-    <div nz-col class="gutter-row" [nzSpan]="12">
-      <div class="u-align-left">
-        <label for="situation"
-          >Situation familiale<span class="required">*</span></label
-        >
-        <label for="situation" style="float: right"
-          ><span class="required">*</span>الحالة العائلية</label
-        >
-        <nz-select
-          id="situation"
-          style="width: 100%"
-          formControlName="situation"
-        ></nz-select>
-      </div>
-    </div>
-  </div>
-</form>
+  </form>
+</div>

@@ -48,6 +48,6 @@ export class CertificatResidenceComponent implements OnInit {
   }
 
   openPdf() {
-    this.crService.download({ cin: this.cin });
+    this.crService.download({ cin: this.cin, adrFr: this.addr });
   }
 }

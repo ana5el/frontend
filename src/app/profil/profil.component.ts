@@ -9,10 +9,10 @@ import { UserService } from '../_services/user.service';
 })
 export class ProfilComponent implements OnInit {
   qrCode!: string;
-
+  currentUser: any;
   constructor(
-    authenticationService: AuthenticationService,
-    userService: UserService
+    private authenticationService: AuthenticationService,
+    private userService: UserService
   ) {
     let username: string = authenticationService.userValue!.username;
     console.log('USERNAME : ' + username);
@@ -22,7 +22,14 @@ export class ProfilComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService
+      .getByUsername(this.authenticationService.userValue!.username)
+      .subscribe((data) => {
+        console.log(data);
+        this.currentUser = data;
+      });
+  }
 
   showIdAndName() {}
   showContactInfo() {}
