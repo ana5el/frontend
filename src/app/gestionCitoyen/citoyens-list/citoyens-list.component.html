@@ -1,0 +1,109 @@
+<nz-divider [nzText]="text">
+  <ng-template #text>
+    <i class="fa fa-users" aria-hidden="true"></i>
+    Gestion des citoyens
+  </ng-template>
+</nz-divider>
+<div nz-row style="margin-bottom: 8px">
+  <div nz-col>
+    <button
+      nz-button
+      nzType="primary"
+      nzSize="default"
+      nzShape="round"
+      style="margin-right: 6px"
+    >
+      <i nz-icon nzType="plus"></i>
+      Ajouter
+    </button>
+  </div>
+  <div nz-col>
+    <button
+      nz-button
+      nzSize="default"
+      nzShape="round"
+      style="margin-right: 6px"
+      (click)="export()"
+    >
+      <i nz-icon nzType="file-excel" nzTheme="outline"></i> Expoter (xlsx)
+    </button>
+  </div>
+  <div nz-col>
+    <button
+      nz-button
+      nzSize="default"
+      nzShape="round"
+      style="margin-right: 6px"
+    >
+      <i nz-icon nzType="file-pdf" nzTheme="outline"></i> Expoter (pdf)
+    </button>
+  </div>
+</div>
+
+<nz-table
+  #nzTable
+  [nzData]="listOfDisplayData"
+  [nzScroll]="{ x: '1150px', y: '240px' }"
+  nzSize="small"
+>
+  <thead>
+    <tr>
+      <th nzCustomFilter nzLeft>
+        CIN
+        <nz-filter-trigger
+          [(nzVisible)]="visible"
+          [nzActive]="searchValue.length > 0"
+          [nzDropdownMenu]="menu"
+        >
+          <i nz-icon nzType="search"></i>
+        </nz-filter-trigger>
+      </th>
+      <th>Nom (Fr)</th>
+      <th>Nom (Ar)</th>
+      <th>Prenom (Fr)</th>
+      <th>Prenom (Ar)</th>
+      <th>Date de naissance</th>
+      <th>lieu de naissance</th>
+      <th>Nom du père (Fr)</th>
+      <th>Nom du père (Ar)</th>
+      <th>Nom de mère (Fr)</th>
+      <th>Nom de mère (Ar)</th>
+      <th>Situation Familiale</th>
+      <th>Profession</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of nzTable.data">
+      <td nzLeft>{{ data.cin }}</td>
+      <td>{{ data.nomFr }}</td>
+      <td>{{ data.nomAr }}</td>
+      <td>{{ data.prenomFr }}</td>
+      <td>{{ data.prenomAr }}</td>
+      <td>{{ data.dateNaissance | date: "yyyy-MMM-dd" }}</td>
+      <td>{{ data.lieuNaissance }}</td>
+      <td>{{ data.nomMereFr }}</td>
+      <td>{{ data.nomPereAr }}</td>
+      <td>{{ data.nomMereFr }}</td>
+      <td>{{ data.nomMereFr }}</td>
+      <td>{{ data.situationFamiliale }}</td>
+      <td>{{ data.profession.labelFr }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <div class="ant-table-filter-dropdown">
+    <div class="search-box">
+      <input type="text" nz-input placeholder="CIN" [(ngModel)]="searchValue" />
+      <button
+        nz-button
+        nzSize="small"
+        nzType="primary"
+        (click)="search()"
+        class="search-button"
+      >
+        Chercher
+      </button>
+      <button nz-button nzSize="small" (click)="reset()">Annuler</button>
+    </div>
+  </div>
+</nz-dropdown-menu>

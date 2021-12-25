@@ -7,3 +7,7 @@ th {
 h3 {
   text-align: center;
 }
+
+td {
+  font-style: italic;
+}

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { Profession } from 'src/app/_models/profession';
 import { CitoyenService } from 'src/app/_services/citoyen.service';
 import { ProfessionService } from 'src/app/_services/profession.service';
@@ -16,7 +17,8 @@ export class AddCitoyenComponent implements OnInit {
   constructor(
     private professionService: ProfessionService,
     private formBuilder: FormBuilder,
-    private citoyenService: CitoyenService
+    private citoyenService: CitoyenService,
+    private message: NzMessageService
   ) {
     professionService.getAll().subscribe(
       (data) => {
@@ -63,7 +65,10 @@ export class AddCitoyenComponent implements OnInit {
         profession: this.form.get('profession')?.value,
       })
       .subscribe(
-        (data) => console.log(data),
+        (data) => {
+          this.message.success('Ajouter avec succès');
+          this.form.reset();
+        },
         (error) => console.log(error)
       );
   }

@@ -4,7 +4,7 @@
     Ajouter un cityoen
   </ng-template>
 </nz-divider>
-{{ form.value | json }}
+<!--{{ form.value | json }}-->
 <div>
   <form [formGroup]="form">
     <div nz-row>
@@ -190,9 +190,7 @@
     <div nz-row nzJustify="center" style="margin-top: 30px">
       <div nz-col>
         <button nz-button nzType="primary" (click)="create()">Ajouter</button>
-        <button nz-button nzType="primary" nzDanger (click)="form.reset()">
-          Vider
-        </button>
+        <button nz-button (click)="form.reset()">Annuler</button>
       </div>
     </div>
   </form>

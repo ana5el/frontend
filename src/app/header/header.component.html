@@ -39,13 +39,24 @@
         >
           GUPP
         </li>
-        <li
-          nz-menu-item
-          routerLink="/gcitoyens"
-          routerLinkActive="active"
-          *ngIf="isAdmin"
-        >
-          G. Citoyens
+
+        <li nz-submenu nzTitle="G.Cetoyens">
+          <ul>
+            <li
+              nz-menu-item
+              routerLink="/add-citoyen"
+              routerLinkActive="active"
+            >
+              Ajouter
+            </li>
+            <li
+              nz-menu-item
+              routerLink="/list-citoyens"
+              routerLinkActive="active"
+            >
+              Lister
+            </li>
+          </ul>
         </li>
         <li
           nz-menu-item

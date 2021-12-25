@@ -11,7 +11,15 @@
           <img src="../../assets/img/login-photo.png" width="60%" />
         </nz-form-item>
 
-        <nz-form-item>
+        <h2 style="text-align: center">Enter le code de confirmation</h2>
+
+        <nz-form-item style="text-align: center">
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <ng-otp-input #ngOtpInputComponent (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!--<nz-form-item>
           <nz-form-control nzErrorTip="Please input your password!">
             <nz-input-group
               nzPrefixIcon="qrcode"
@@ -26,7 +34,7 @@
               />
             </nz-input-group>
           </nz-form-control>
-        </nz-form-item>
+        </nz-form-item>-->
         <button
           nz-button
           nzType="primary"

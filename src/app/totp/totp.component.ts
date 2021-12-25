@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from './../_services/authentication.service';
 import { TokenStorageService } from './../_services/token-storage.service';
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChildren} from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -14,6 +14,13 @@ export class TotpComponent implements OnInit {
   totpForm!: FormGroup;
   error: string = '';
 
+  @ViewChildren('ngOtpInput') ngOtpInput: any;
+  otp!: string;
+  config = {
+    allowNumbersOnly: true,
+    length: 6,
+    disableAutoFocus: false,
+  };
   constructor(
     private tokenStrorageService: TokenStorageService,
     private authenticationService: AuthenticationService,
@@ -40,7 +47,7 @@ export class TotpComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.authenticationService.verify(this.f.code.value).subscribe(
+    this.authenticationService.verify(this.otp).subscribe(
       (next) => {
         this.router.navigate(['/']);
       },
@@ -55,5 +62,11 @@ export class TotpComponent implements OnInit {
 
   showMessage(type: string, msg: string) {
     this.message.create(type, msg);
+  }
+
+
+  onOtpChange(otp:string) {
+    this.otp = otp;
+    console.log(this.otp)
   }
 }

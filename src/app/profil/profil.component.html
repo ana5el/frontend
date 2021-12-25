@@ -76,6 +76,7 @@
   </div>
 </div>
 -->
+<!--
 <div nz-row style="padding: 20px 0">
   <div nz-col nzSpan="6">
     <ul nz-menu>
@@ -87,7 +88,6 @@
   <div nz-col nzSpan="18">
     <div nz-row>
       <div nz-col nzSpan="4" style="padding-left: 20px">
-        <!--<img [src]="qrCode" alt="Internal Error" width="60%" />-->
         <nz-avatar
           [nzShape]="'square'"
           [nzSize]="100"
@@ -138,6 +138,87 @@
           </tr>
         </table>
       </div>
+    </div>
+  </div>
+</div>
+-->
+<div style="margin: 30px 50px">
+
+  <h1>Bienvenue</h1>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="4">
+      <nz-card style="text-align: center">
+        <nz-avatar
+          [nzShape]="'square'"
+          [nzSize]="150"
+          [nzIcon]="'user'"
+        ></nz-avatar>
+        <h4><i>EL MRABTI Anas</i></h4>
+      </nz-card>
+    </div>
+    <div nz-col nzSpan="19" style="margin-left: 15px">
+      <nz-card style="height: 50vh;">
+        <div nz-row [nzGutter]="8">
+          <div nz-col [nzSpan]="8">
+            <table>
+              <tr>
+                <td colSpan="2"><h2>Compte</h2></td>
+              </tr>
+              <tr>
+                <td>Nom d'utilisateur</td>
+                <td> : {{currentUser?.username}}</td>
+              </tr>
+              <tr>
+                <td>Profil</td>
+                <td> : {{currentUser?.profile.labelFr}}</td>
+              </tr>
+
+            </table>
+          </div>
+          <div nz-col [nzSpan]="12">
+            <table>
+              <tr>
+                <td colSpan="2"><h2>Informations personnel</h2></td>
+              </tr>
+              <tr>
+                <td>Nom</td>
+                <td>: EL MRABTI</td>
+              </tr>
+              <tr>
+                <td>Prénom</td>
+                <td>: ANAS</td>
+              </tr>
+              <tr>
+                <td>Genre</td>
+                <td> : -----</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>: anas.elmrabti@pref-aio.ma</td>
+              </tr>
+
+              <tr>
+                <td>CIN</td>
+                <td>: J529628</td>
+              </tr>
+              <tr>
+                <td>Téléphone</td>
+                <td>: 0600000000</td>
+              </tr>
+              <tr>
+                <td>AAL d'afectation</td>
+                <!--  <td>: {{ currentUser?.agentAutorite.aal?.labelFr }}</td>-->
+                <td>: Préfecture AIO</td>
+              </tr>
+              <tr>
+                <td>Grade</td>
+                <td>: -----</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </nz-card>
     </div>
   </div>
 </div>

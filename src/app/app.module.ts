@@ -44,6 +44,9 @@ import { AddCitoyenComponent } from './gestionCitoyen/add-citoyen/add-citoyen.co
 import { IdAndNameComponent } from './profil/id-and-name/id-and-name.component';
 import { ContactInfoComponent } from './profil/contact-info/contact-info.component';
 import { UpdateUserComponent } from './gupp/update-user/update-user.component';
+import { CitoyensListComponent } from './gestionCitoyen/citoyens-list/citoyens-list.component';
+import {NgOtpInputModule} from "ng-otp-input";
+import {NzCardModule} from "ng-zorro-antd/card";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -79,29 +82,32 @@ registerLocaleData(fr);
     IdAndNameComponent,
     ContactInfoComponent,
     UpdateUserComponent,
+    CitoyensListComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
-    NgZorroAntdModule,
-    BrowserAnimationsModule,
-    AgmCoreModule.forRoot({
-      apiKey: environment.maps_api_key,
-      libraries: ['places', 'drawing', 'geometry'],
-    }),
-    ToastrModule.forRoot(),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-      isolate: false,
-    }),
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientModule,
+        NgZorroAntdModule,
+        BrowserAnimationsModule,
+        AgmCoreModule.forRoot({
+            apiKey: environment.maps_api_key,
+            libraries: ['places', 'drawing', 'geometry'],
+        }),
+        ToastrModule.forRoot(),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient],
+            },
+            isolate: false,
+        }),
+        NgOtpInputModule,
+        NzCardModule,
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
